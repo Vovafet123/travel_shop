@@ -1,0 +1,11 @@
+poetry init - Инициализация окружения в проекте
+
+poetry shell - активировать окружение
+exit - выйти с окружения
+
+poetry install - установить всех библиотек с poetry.lock
+
+poetry add - установка библиотеки
+poetry add {lib_name} --group {group_name} - установка библиотеки в отделную группу
+
+poetry remove - удалить библиотеку

@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "travel-shop"
+version = "0.0.1"
+description = ""
+authors = ["Vovak <Vovakjh@yandex.ru>"]
+readme = "README.md"
+packages = [{include = "travel_shop"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
