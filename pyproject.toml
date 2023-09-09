@@ -10,6 +10,9 @@ packages = [{include = "travel_shop"}]
 python = "^3.11"
 django = "^4.2.2"
 python-dotenv = "^1.0.0"
+djangorestframework = "^3.14.0"
+faker = "^19.3.1"
+requests = "^2.31.0"
 
 
 [tool.poetry.group.dev.dependencies]

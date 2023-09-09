@@ -8,11 +8,7 @@
 {% endblock %}
 
 {% block content %}
-    {% if is_log_in %}
-        <form action="{% url 'signin' %}" method="post">
-    {% else %}
-        <form action="{% url 'log_in' %}" method="post">
-    {% endif %}
+        <form action="{% url 'registration' %}" method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="button submit" class="btn btn-primary">Подтвердить</button>

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block navigation %}
-  {% if request.user.is_authenticated or %}
+  {% if request.user.is_authenticated %}
     <li class="nav-item">
       <h3 class="text-white">{{ user.login }}</h3>
     </li>
@@ -11,7 +11,7 @@
     </li>
   {% else %}
     <li class="nav-item">
-      <a class="nav-link text-white" aria-current="page" href="{% url 'signin' %}">Регистрация</a>
+      <a class="nav-link text-white" aria-current="page" href="{% url 'registration' %}">Регистрация</a>
     </li>
     <li class="nav-item">
       <a class="nav-link text-white" aria-current="page" href="{% url 'log_in' %}">Вход</a>
@@ -21,5 +21,9 @@
 {% endblock %}
 
 {% block content %}
-
+<div class="d-grid gap-2 col-6 mx-auto">
+  <button type="button submit" class="btn btn-primary">
+    <a class="nav-link text-white" aria-current="page" href="{% url 'countries' %}">Выбрать билет</a>
+  </button>
+</div>
 {% endblock %}

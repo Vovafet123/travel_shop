@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block navigation %}
+  <li class="nav-item">
+    <a class="nav-link text-white" aria-current="page" href="{% url 'main' %}">На главную</a>
+  </li>
+
+{% endblock %}
+
+{% block content %}
+ <div class="d-flex flex-column">
+    <div class="row g-3">
+      <div class="col-12 p-5" align="center">
+        <div class="card h-100 w-50" style="width: 18rem;">
+
+          <div class="container">
+
+            <div class="col-lg-6 float-start mt-4">
+              <img src="{{room.image.url}}" class="img-fluid rounded-start" alt="{{ room.pk }}">
+            </div>
+
+            <div style="text-align: left;" class="col-lg-12">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">ВАУЧЕР / VOUCHER </h5>
+                <p class="card-text">Перелет и проживание в {{ city }}</p>
+                <p class="card-text">Отель {{ hotel }}</p>
+                <p class="card-text">дата заезда: </p>
+                <p class="card-text">дата выезда: </p><br>
+                <p class="card-text">Общая стоимость ваучера: </p>
+              </div>
+            </div>
+           </div>
+                <div class="card-footer">
+                  <a href="#" id="send-data" class="mt-auto btn btn-primary" onclick="getData(JSON.parse('{{ room.pk|escapejs }}'))">Купить</a>
+                </div>
+
+
+
+
+        </div>
+      </div>
+  </div>
+</div>
+{% endblock %}

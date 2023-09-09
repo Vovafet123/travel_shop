@@ -1,14 +1,13 @@
 from django.contrib import admin
 from django.db.models import Sum
-from django.forms import TextInput, Textarea
+from django.forms import Textarea
 
-from core.models import User
 from core.models.site_models import *
 
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('login', 'balance', 'is_premium', 'is_superuser',)
+    list_display = ('login', 'balance', 'is_premium', 'is_superuser')
 
 
 @admin.register(Country)
@@ -20,7 +19,7 @@ class CountryAdmin(admin.ModelAdmin):
     def quantity(self, obj):
         return obj.city_set.aggregate(quantity=Sum('quantity'))['quantity']
 
-    list_display = ("name",)
+    list_display = ("name", "image")
     inlines = (CountryCitiesInline,)
 
     search_fields = ('name',)
@@ -33,7 +32,7 @@ class CityAdmin(admin.ModelAdmin):
         model = Hotel
         extra = 1
 
-    list_display = ("name", "ticket_price",)
+    list_display = ("name", "ticket_price", "image")
     inlines = (CitiesHostelInline,)
 
     search_fields = ('name',)
@@ -50,11 +49,11 @@ class HotelAdmin(admin.ModelAdmin):
         model = HotelRoom
         extra = 1
 
-    list_display = ("name", 'description', "stars", "city",)
+    list_display = ("name", 'description', "stars", "city", "image")
     inlines = (HotelServiceInline, HotelRoomsInline)
 
     search_fields = ('name',)
-    list_filter = ("name", 'description', "stars", "city",)
+    list_filter = ("name", 'description', "stars", "city")
 
     formfield_overrides = {
         models.TextField: {'widget': Textarea(attrs={'rows': 10, 'cols': 100})},
@@ -63,15 +62,15 @@ class HotelAdmin(admin.ModelAdmin):
 
 @admin.register(Room)
 class RoomAdmin(admin.ModelAdmin):
-    list_display = ("room_type",)
+    list_display = ("room_number", "price_per_day", "image")
 
 
 @admin.register(Voucher)
 class VoucherAdmin(admin.ModelAdmin):
-    list_display = ("hotel", "days", "departure_date",)
+    list_display = ("hotel", "user", "total_price")
 
     search_fields = ('hotel',)
-    list_filter = ("hotel", "departure_date",)
+    list_filter = ("hotel", "user")
 
 
 @admin.register(HotelService)

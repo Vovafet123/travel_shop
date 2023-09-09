@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block navigation %}
+  <li class="nav-item">
+    <a class="nav-link text-white" aria-current="page" href="{% url 'main' %}">На главную</a>
+  </li>
+{% endblock %}
+
+{% block content %}
+        <form action="{% url 'log_in' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="button submit" class="btn btn-primary">Подтвердить</button>
+        </form>
+{% endblock %}
